@@ -81,6 +81,53 @@
             border-radius: 24px;
             position: relative;
         }
+
+        /* Light Mode Styles */
+        body.light-mode {
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .light-mode .bg-slate-900, .light-mode .bg-slate-950 {
+            background-color: #ffffff;
+        }
+        .light-mode .bg-slate-800, .light-mode .bg-slate-800\/50 {
+            background-color: #f1f5f9;
+        }
+        .light-mode .text-white {
+            color: #0f172a;
+        }
+        .light-mode .text-slate-200, .light-mode .text-slate-300, .light-mode .text-slate-400 {
+            color: #475569;
+        }
+        .light-mode border-slate-700, .light-mode .border-slate-800 {
+            border-color: #e2e8f0;
+        }
+        .light-mode nav {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-bottom-color: #e2e8f0;
+        }
+        .light-mode .modal-content {
+            background-color: #ffffff;
+            border-color: #e2e8f0;
+        }
+
+        /* Skill Progress Bars */
+        .skill-bar-container {
+            width: 100%;
+            background-color: #334155;
+            border-radius: 10px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        .light-mode .skill-bar-container {
+            background-color: #e2e8f0;
+        }
+        .skill-bar-fill {
+            height: 6px;
+            background: linear-gradient(to right, #60a5fa, #3b82f6);
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-slate-900 text-slate-200">
@@ -103,10 +150,19 @@
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
+                    <!-- Theme Toggle (Mobile) -->
+                    <button id="theme-toggle-mobile" class="mr-4 text-slate-300 hover:text-blue-400">
+                        <i class="fas fa-moon"></i>
+                    </button>
                     <button id="mobile-menu-button" class="text-slate-300 hover:text-white focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
+                
+                <!-- Theme Toggle (Desktop) -->
+                <button id="theme-toggle" class="hidden md:block ml-4 text-slate-300 hover:text-blue-400 transition-colors">
+                    <i class="fas fa-moon text-lg"></i>
+                </button>
             </div>
         </div>
 
@@ -262,36 +318,72 @@
             <!-- Core Expertise -->
             <div class="mb-20">
                 <h3 class="text-blue-400 font-semibold mb-8 text-sm uppercase tracking-widest text-center">Core Expertise</h3>
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
-                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 text-center hover:border-blue-500 transition-colors group">
-                        <div class="text-blue-400 mb-4 text-3xl group-hover:scale-110 transition-transform">
-                            <i class="fab fa-python"></i>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Python -->
+                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors group">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-blue-400 text-3xl group-hover:scale-110 transition-transform"><i class="fab fa-python"></i></div>
+                            <span class="text-slate-400 text-xs font-bold uppercase">90%</span>
                         </div>
-                        <h4 class="font-bold text-base">Python</h4>
+                        <h4 class="font-bold text-base mb-2">Python</h4>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" data-target="90%"></div>
+                        </div>
                     </div>
-                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 text-center hover:border-blue-500 transition-colors group">
-                        <div class="text-blue-400 mb-4 text-3xl group-hover:scale-110 transition-transform">
-                            <i class="fas fa-database"></i>
+                    <!-- PySpark -->
+                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors group">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-blue-400 text-3xl group-hover:scale-110 transition-transform"><i class="fas fa-bolt"></i></div>
+                            <span class="text-slate-400 text-xs font-bold uppercase">85%</span>
                         </div>
-                        <h4 class="font-bold text-base">SQL / MySQL</h4>
+                        <h4 class="font-bold text-base mb-2">PySpark / Hadoop</h4>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" data-target="85%"></div>
+                        </div>
                     </div>
-                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 text-center hover:border-blue-500 transition-colors group">
-                        <div class="text-blue-400 mb-4 text-3xl group-hover:scale-110 transition-transform">
-                            <i class="fas fa-bolt"></i>
+                    <!-- SQL -->
+                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors group">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-blue-400 text-3xl group-hover:scale-110 transition-transform"><i class="fas fa-database"></i></div>
+                            <span class="text-slate-400 text-xs font-bold uppercase">95%</span>
                         </div>
-                        <h4 class="font-bold text-base">PySpark</h4>
+                        <h4 class="font-bold text-base mb-2">SQL / PostgreSQL</h4>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" data-target="95%"></div>
+                        </div>
                     </div>
-                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 text-center hover:border-blue-500 transition-colors group">
-                        <div class="text-blue-400 mb-4 text-3xl group-hover:scale-110 transition-transform">
-                            <i class="fas fa-chart-bar"></i>
+                    <!-- AWS -->
+                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors group">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-blue-400 text-3xl group-hover:scale-110 transition-transform"><i class="fab fa-aws"></i></div>
+                            <span class="text-slate-400 text-xs font-bold uppercase">80%</span>
                         </div>
-                        <h4 class="font-bold text-base">Big Data</h4>
+                        <h4 class="font-bold text-base mb-2">AWS (S3, Glue, Lambda)</h4>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" data-target="80%"></div>
+                        </div>
                     </div>
-                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 text-center hover:border-blue-500 transition-colors group">
-                        <div class="text-blue-400 mb-4 text-3xl group-hover:scale-110 transition-transform">
-                            <i class="fas fa-rocket"></i>
+                    <!-- Snowflake -->
+                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors group">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-blue-400 text-3xl group-hover:scale-110 transition-transform"><i class="fas fa-snowflake"></i></div>
+                            <span class="text-slate-400 text-xs font-bold uppercase">75%</span>
                         </div>
-                        <h4 class="font-bold text-base">Reltio MDM</h4>
+                        <h4 class="font-bold text-base mb-2">Snowflake Data Cloud</h4>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" data-target="75%"></div>
+                        </div>
+                    </div>
+                    <!-- Reltio MDM -->
+                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors group">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="text-blue-400 text-3xl group-hover:scale-110 transition-transform"><i class="fas fa-rocket"></i></div>
+                            <span class="text-slate-400 text-xs font-bold uppercase">85%</span>
+                        </div>
+                        <h4 class="font-bold text-base mb-2">Reltio Multidomain MDM</h4>
+                        <div class="skill-bar-container">
+                            <div class="skill-bar-fill" data-target="85%"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -329,10 +421,19 @@
     <!-- Projects Section -->
     <section id="projects" class="py-24 bg-slate-900" data-aos="fade-up">
         <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-16 text-center text-white">Featured Projects</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <h2 class="text-3xl font-bold mb-8 text-center text-white">Featured Projects</h2>
+            
+            <!-- Project Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-16">
+                <button onclick="filterProjects('all')" class="filter-btn active px-6 py-2 rounded-full border border-blue-500 bg-blue-500 text-white text-sm font-bold transition-all">All</button>
+                <button onclick="filterProjects('data-eng')" class="filter-btn px-6 py-2 rounded-full border border-slate-700 hover:border-blue-500 text-slate-400 hover:text-blue-400 text-sm font-bold transition-all">Data Engineering</button>
+                <button onclick="filterProjects('ml')" class="filter-btn px-6 py-2 rounded-full border border-slate-700 hover:border-blue-500 text-slate-400 hover:text-blue-400 text-sm font-bold transition-all">Machine Learning</button>
+                <button onclick="filterProjects('cloud')" class="filter-btn px-6 py-2 rounded-full border border-slate-700 hover:border-blue-500 text-slate-400 hover:text-blue-400 text-sm font-bold transition-all">Cloud & Tools</button>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 project-container">
                 <!-- Credit Card Fraud Detection -->
-                <div class="group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="project-card ml group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2">
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
                             <div class="text-4xl text-blue-400"><i class="fas fa-shield-alt"></i></div>
@@ -357,7 +458,7 @@
                 </div>
 
                 <!-- Real-Time Lakehouse Pipeline -->
-                <div class="group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="project-card data-eng group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2">
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
                             <div class="text-4xl text-blue-400"><i class="fas fa-stream"></i></div>
@@ -381,7 +482,7 @@
                 </div>
 
                 <!-- MDM-Ready Data Quality Firewall -->
-                <div class="group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="project-card data-eng group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2">
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
                             <div class="text-4xl text-blue-400"><i class="fas fa-shield-virus"></i></div>
@@ -405,7 +506,7 @@
                 </div>
 
                 <!-- End-to-End Serverless ETL -->
-                <div class="group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
+                <div class="project-card cloud data-eng group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
                             <div class="text-4xl text-blue-400"><i class="fas fa-cloud-upload-alt"></i></div>
@@ -429,7 +530,7 @@
                 </div>
 
                 <!-- Snowslice App Project -->
-                <div class="group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
+                <div class="project-card cloud group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
                     <div class="p-8">
                         <div class="flex justify-between items-start mb-6">
                             <div class="text-4xl text-blue-400"><i class="fas fa-snowflake"></i></div>
@@ -450,6 +551,30 @@
                             <a href="https://github.com/Prajakta2011/snoslice" target="_blank" class="text-blue-400 text-sm font-bold hover:underline flex items-center">
                                 View Repository <i class="fas fa-arrow-right ml-2 text-xs"></i>
                             </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clinical Trial Patient Monitoring Pipeline -->
+                <div class="project-card data-eng group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="text-4xl text-blue-400"><i class="fas fa-heartbeat"></i></div>
+                            <div class="text-slate-500"><i class="fab fa-github text-2xl"></i></div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Clinical Data Pipeline</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            Automated the ingestion of clinical site data to monitor patient safety. Implemented checks for Adverse Events and prepared data for FDA-standard reporting.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">PySpark</span>
+                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">Life Sciences</span>
+                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">AWS S3</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <span class="text-blue-400 text-sm font-bold flex items-center cursor-default">
+                                <i class="fas fa-notes-medical mr-2"></i> Health Tech
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -722,14 +847,78 @@
 
       // Trigger animation when section is in view
       const statsSection = document.querySelector('.counter').parentElement.parentElement.parentElement;
-      const observer = new IntersectionObserver((entries) => {
+      const statsObserver = new IntersectionObserver((entries) => {
           if(entries[0].isIntersecting) {
               animateCounters();
-              observer.unobserve(statsSection);
+              statsObserver.unobserve(statsSection);
           }
       }, { threshold: 0.5 });
 
-      observer.observe(statsSection);
+      statsObserver.observe(statsSection);
+
+      // --- NEW: Theme Toggle Logic ---
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+      const body = document.body;
+
+      function toggleTheme() {
+          body.classList.toggle('light-mode');
+          const isLight = body.classList.contains('light-mode');
+          const iconClass = isLight ? 'fa-sun' : 'moon';
+          themeToggle.innerHTML = `<i class="fas fa-${iconClass} text-lg"></i>`;
+          themeToggleMobile.innerHTML = `<i class="fas fa-${iconClass}"></i>`;
+          localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+      }
+
+      themeToggle.addEventListener('click', toggleTheme);
+      themeToggleMobile.addEventListener('click', toggleTheme);
+
+      // Check for saved theme
+      if (localStorage.getItem('portfolio-theme') === 'light') {
+          toggleTheme();
+      }
+
+      // --- NEW: Project Filtering Logic ---
+      function filterProjects(category) {
+          const cards = document.querySelectorAll('.project-card');
+          const buttons = document.querySelectorAll('.filter-btn');
+
+          // Update active button
+          buttons.forEach(btn => {
+              btn.classList.remove('bg-blue-500', 'text-white', 'border-blue-500');
+              btn.classList.add('text-slate-400', 'border-slate-700');
+              if (btn.getAttribute('onclick').includes(category)) {
+                  btn.classList.remove('text-slate-400', 'border-slate-700');
+                  btn.classList.add('bg-blue-500', 'text-white', 'border-blue-500');
+              }
+          });
+
+          // Show/Hide cards
+          cards.forEach(card => {
+              card.style.display = 'none';
+              if (category === 'all' || card.classList.contains(category)) {
+                  card.style.display = 'block';
+                  // Trigger AOS animation again
+                  card.setAttribute('data-aos', 'fade-up');
+              }
+          });
+      }
+
+      // --- NEW: Skill Bar Animation ---
+      const skillBars = document.querySelectorAll('.skill-bar-fill');
+      const skillsSection = document.getElementById('skills');
+
+      const skillObserver = new IntersectionObserver((entries) => {
+          if(entries[0].isIntersecting) {
+              skillBars.forEach(bar => {
+                  const target = bar.getAttribute('data-target');
+                  bar.style.width = target;
+              });
+              skillObserver.unobserve(skillsSection);
+          }
+      }, { threshold: 0.2 });
+
+      skillObserver.observe(skillsSection);
     </script>
 </body>
 </html>
