@@ -17,25 +17,16 @@
     <meta property="og:description" content="Explore my projects in Big Data, Machine Learning, and Master Data Management. Currently building cloud-native solutions at Saama.">
     <meta property="og:image" content="https://raw.githubusercontent.com/Prajakta2011/prajakta-masal-portfolio/master/preview.png">
 
-    <!-- Twitter Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Prajakta Masal | Data Engineer Portfolio">
-    <meta name="twitter:description" content="Specializing in Big Data and MDM solutions. Transforming fragmented data into strategic assets.">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; transition: background-color 0.3s, color 0.3s; }
         .gradient-text {
             background: linear-gradient(to right, #60a5fa, #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-        .hero-bg {
-            background-color: #0f172a; /* Navy Blue */
-            background-image: radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.8) 0%, #0f172a 100%);
         }
         
         /* Glass Navbar Scroll Effect */
@@ -87,23 +78,26 @@
             background-color: #f8fafc;
             color: #1e293b;
         }
-        .light-mode .bg-slate-900, .light-mode .bg-slate-950 {
+        .light-mode .bg-slate-900, .light-mode .bg-slate-950, .light-mode #mobile-menu {
             background-color: #ffffff;
         }
         .light-mode .bg-slate-800, .light-mode .bg-slate-800\/50 {
             background-color: #f1f5f9;
         }
-        .light-mode .text-white {
+        .light-mode .text-white, .light-mode h1, .light-mode h2, .light-mode h3, .light-mode h4 {
             color: #0f172a;
         }
         .light-mode .text-slate-200, .light-mode .text-slate-300, .light-mode .text-slate-400 {
             color: #475569;
         }
-        .light-mode border-slate-700, .light-mode .border-slate-800 {
+        .light-mode .border-slate-700, .light-mode .border-slate-800 {
             border-color: #e2e8f0;
         }
         .light-mode nav {
             background-color: rgba(255, 255, 255, 0.8);
+        }
+        .light-mode nav.scrolled {
+            background-color: rgba(255, 255, 255, 0.9);
             border-bottom-color: #e2e8f0;
         }
         .light-mode .modal-content {
@@ -128,6 +122,8 @@
             width: 0;
             transition: width 1.5s ease-in-out;
         }
+        
+        .project-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
 </head>
 <body class="bg-slate-900 text-slate-200">
@@ -146,11 +142,13 @@
                     <a href="#experience" class="hover:text-blue-400 transition-colors">Experience</a>
                     <a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a>
                     <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded-lg text-xs font-bold transition-all">Resume</a>
+                    <button id="theme-toggle" class="text-slate-300 hover:text-blue-400 transition-colors">
+                        <i class="fas fa-moon text-lg"></i>
+                    </button>
                 </div>
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
-                    <!-- Theme Toggle (Mobile) -->
                     <button id="theme-toggle-mobile" class="mr-4 text-slate-300 hover:text-blue-400">
                         <i class="fas fa-moon"></i>
                     </button>
@@ -158,11 +156,6 @@
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
-                
-                <!-- Theme Toggle (Desktop) -->
-                <button id="theme-toggle" class="hidden md:block ml-4 text-slate-300 hover:text-blue-400 transition-colors">
-                    <i class="fas fa-moon text-lg"></i>
-                </button>
             </div>
         </div>
 
@@ -181,9 +174,7 @@
 
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-slate-950">
-        <!-- Interactive Canvas Background -->
         <canvas id="hero-canvas" class="absolute inset-0 z-0 opacity-40"></canvas>
-        
         <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
             <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white">Prajakta Masal</h1>
             <p class="text-xl md:text-2xl text-slate-400 mb-8 max-w-2xl mx-auto font-light">
@@ -195,66 +186,10 @@
             <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
                 <a href="#contact" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium transition-all transform hover:scale-105 shadow-lg shadow-blue-500/20">Get in Touch</a>
                 <a href="#" class="w-full sm:w-auto flex items-center justify-center border border-blue-500/50 hover:bg-blue-500/10 text-blue-400 px-8 py-3 rounded-full font-medium transition-all">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-4l-4 4m0 0l-4-4m4-4v12"></path></svg>
-                    Download Resume
+                    <i class="fas fa-download mr-2"></i> Download Resume
                 </a>
             </div>
         </div>
-    </section>
-
-    <script>
-        // Interactive Particle Background
-        const canvas = document.getElementById('hero-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function init() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            particles = [];
-            for (let i = 0; i < 100; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.5,
-                    vy: (Math.random() - 0.5) * 0.5,
-                    size: Math.random() * 2
-                });
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#3b82f6';
-            ctx.strokeStyle = 'rgba(59, 130, 246, 0.1)';
-
-            particles.forEach((p, i) => {
-                p.x += p.vx;
-                p.y += p.vy;
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fill();
-
-                for (let j = i + 1; j < particles.length; j++) {
-                    const p2 = particles[j];
-                    const dist = Math.sqrt((p.x - p2.x)**2 + (p.y - p2.y)**2);
-                    if (dist < 150) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                    }
-                }
-            });
-            requestAnimationFrame(animate);
-        }
-
-        window.addEventListener('resize', init);
-        init();
-        animate();
     </section>
 
     <!-- Stats Counter Section -->
@@ -286,133 +221,42 @@
         <div class="max-w-3xl mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold mb-8 text-white">About Me</h2>
             <p class="text-slate-300 text-lg leading-relaxed">
-                I am a results-driven Data Engineering professional and Computer Engineering graduate with a specialized Post Graduate Diploma in Big Data Analytics (CDAC-DBDA). Currently a Data Engineer at Saama, I specialize in architecting cloud-native data solutions using the Reltio Multidomain MDM platform. My expertise lies at the intersection of Big Data, Distributed Computing (PySpark), and robust Data Governance. I am passionate about transforming fragmented data into strategic assets, leveraging modern tools like AWS and Python to build scalable, high-performance pipelines that drive business innovation and community-oriented technological growth.
+                I am a results-driven Data Engineering professional and Computer Engineering graduate with a specialized Post Graduate Diploma in Big Data Analytics (CDAC-DBDA). Currently a Data Engineer at Saama, I specialize in architecting cloud-native data solutions using the Reltio Multidomain MDM platform. My expertise lies at the intersection of Big Data, Distributed Computing (PySpark), and robust Data Governance.
             </p>
         </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education" class="py-24" data-aos="fade-up">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-16 text-center text-white">Education</h2>
-            <div class="space-y-8">
-                <div class="p-8 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors">
-                    <h3 class="text-xl font-bold text-white">PG-Diploma in Big Data Analytics (DBDA)</h3>
-                    <p class="text-blue-400 font-semibold mb-2">CDAC • 2023 - 2024</p>
-                    <p class="text-slate-400">Specialized training in Hadoop, Spark, NoSQL, and Advanced Analytics techniques.</p>
-                </div>
-                <div class="p-8 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors">
-                    <h3 class="text-xl font-bold text-white">Bachelor of Engineering in Computer Science</h3>
-                    <p class="text-blue-400 font-semibold mb-2">VPKBIET, Baramati • 2019 - 2023</p>
-                    <p class="text-slate-400">Comprehensive foundation in software engineering, database management, and distributed systems.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills & Tools Section -->
+    <!-- Skills Section -->
     <section id="skills" class="py-24" data-aos="fade-up">
         <div class="max-w-6xl mx-auto px-4">
             <h2 class="text-3xl font-bold mb-16 text-center text-white">Skills & Technologies</h2>
-            
-            <!-- Core Expertise -->
-            <div class="mb-20">
-                <h3 class="text-blue-400 font-semibold mb-8 text-sm uppercase tracking-widest text-center">Core Expertise</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Python -->
-                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors group">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-blue-400 text-3xl group-hover:scale-110 transition-transform"><i class="fab fa-python"></i></div>
-                            <span class="text-slate-400 text-xs font-bold uppercase">90%</span>
-                        </div>
-                        <h4 class="font-bold text-base mb-2">Python</h4>
-                        <div class="skill-bar-container">
-                            <div class="skill-bar-fill" data-target="90%"></div>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+                <!-- Skill Item -->
+                <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors group">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-blue-400 text-3xl group-hover:scale-110 transition-transform"><i class="fab fa-python"></i></div>
+                        <span class="text-slate-400 text-xs font-bold uppercase">90%</span>
                     </div>
-                    <!-- PySpark -->
-                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors group">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-blue-400 text-3xl group-hover:scale-110 transition-transform"><i class="fas fa-bolt"></i></div>
-                            <span class="text-slate-400 text-xs font-bold uppercase">85%</span>
-                        </div>
-                        <h4 class="font-bold text-base mb-2">PySpark / Hadoop</h4>
-                        <div class="skill-bar-container">
-                            <div class="skill-bar-fill" data-target="85%"></div>
-                        </div>
-                    </div>
-                    <!-- SQL -->
-                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors group">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-blue-400 text-3xl group-hover:scale-110 transition-transform"><i class="fas fa-database"></i></div>
-                            <span class="text-slate-400 text-xs font-bold uppercase">95%</span>
-                        </div>
-                        <h4 class="font-bold text-base mb-2">SQL / PostgreSQL</h4>
-                        <div class="skill-bar-container">
-                            <div class="skill-bar-fill" data-target="95%"></div>
-                        </div>
-                    </div>
-                    <!-- AWS -->
-                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors group">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-blue-400 text-3xl group-hover:scale-110 transition-transform"><i class="fab fa-aws"></i></div>
-                            <span class="text-slate-400 text-xs font-bold uppercase">80%</span>
-                        </div>
-                        <h4 class="font-bold text-base mb-2">AWS (S3, Glue, Lambda)</h4>
-                        <div class="skill-bar-container">
-                            <div class="skill-bar-fill" data-target="80%"></div>
-                        </div>
-                    </div>
-                    <!-- Snowflake -->
-                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors group">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-blue-400 text-3xl group-hover:scale-110 transition-transform"><i class="fas fa-snowflake"></i></div>
-                            <span class="text-slate-400 text-xs font-bold uppercase">75%</span>
-                        </div>
-                        <h4 class="font-bold text-base mb-2">Snowflake Data Cloud</h4>
-                        <div class="skill-bar-container">
-                            <div class="skill-bar-fill" data-target="75%"></div>
-                        </div>
-                    </div>
-                    <!-- Reltio MDM -->
-                    <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors group">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="text-blue-400 text-3xl group-hover:scale-110 transition-transform"><i class="fas fa-rocket"></i></div>
-                            <span class="text-slate-400 text-xs font-bold uppercase">85%</span>
-                        </div>
-                        <h4 class="font-bold text-base mb-2">Reltio Multidomain MDM</h4>
-                        <div class="skill-bar-container">
-                            <div class="skill-bar-fill" data-target="85%"></div>
-                        </div>
-                    </div>
+                    <h4 class="font-bold text-base mb-2">Python</h4>
+                    <div class="skill-bar-container"><div class="skill-bar-fill" data-target="90%"></div></div>
                 </div>
-            </div>
-
-            <!-- Tools & Ecosystem -->
-            <div>
-                <h3 class="text-blue-400 font-semibold mb-8 text-sm uppercase tracking-widest text-center">Tools & Ecosystem</h3>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <span class="px-6 py-3 bg-slate-800 border border-slate-700 rounded-full text-slate-300 font-medium hover:border-blue-500 transition-colors flex items-center">
-                        <i class="fab fa-aws mr-2"></i> AWS
-                    </span>
-                    <span class="px-6 py-3 bg-slate-800 border border-slate-700 rounded-full text-slate-300 font-medium hover:border-blue-500 transition-colors flex items-center">
-                        <i class="fas fa-tools mr-2"></i> ServiceNow
-                    </span>
-                    <span class="px-6 py-3 bg-slate-800 border border-slate-700 rounded-full text-slate-300 font-medium hover:border-blue-500 transition-colors flex items-center">
-                        <i class="fas fa-paper-plane mr-2"></i> Postman
-                    </span>
-                    <span class="px-6 py-3 bg-slate-800 border border-slate-700 rounded-full text-slate-300 font-medium hover:border-blue-500 transition-colors flex items-center">
-                        <i class="fas fa-box mr-2"></i> Anaconda
-                    </span>
-                    <span class="px-6 py-3 bg-slate-800 border border-slate-700 rounded-full text-slate-300 font-medium hover:border-blue-500 transition-colors flex items-center">
-                        <i class="fas fa-book mr-2"></i> Jupyter
-                    </span>
-                    <span class="px-6 py-3 bg-slate-800 border border-slate-700 rounded-full text-slate-300 font-medium hover:border-blue-500 transition-colors flex items-center">
-                        <i class="fas fa-code mr-2"></i> VS Code
-                    </span>
-                    <span class="px-6 py-3 bg-slate-800 border border-slate-700 rounded-full text-slate-300 font-medium hover:border-blue-500 transition-colors flex items-center">
-                        <i class="fab fa-github mr-2"></i> Git / GitHub
-                    </span>
+                <!-- PySpark -->
+                <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors group">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-blue-400 text-3xl group-hover:scale-110 transition-transform"><i class="fas fa-bolt"></i></div>
+                        <span class="text-slate-400 text-xs font-bold uppercase">85%</span>
+                    </div>
+                    <h4 class="font-bold text-base mb-2">PySpark</h4>
+                    <div class="skill-bar-container"><div class="skill-bar-fill" data-target="85%"></div></div>
+                </div>
+                <!-- SQL -->
+                <div class="p-6 bg-slate-800 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors group">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="text-blue-400 text-3xl group-hover:scale-110 transition-transform"><i class="fas fa-database"></i></div>
+                        <span class="text-slate-400 text-xs font-bold uppercase">95%</span>
+                    </div>
+                    <h4 class="font-bold text-base mb-2">SQL</h4>
+                    <div class="skill-bar-container"><div class="skill-bar-fill" data-target="95%"></div></div>
                 </div>
             </div>
         </div>
@@ -420,162 +264,40 @@
 
     <!-- Projects Section -->
     <section id="projects" class="py-24 bg-slate-900" data-aos="fade-up">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8 text-center text-white">Featured Projects</h2>
-            
-            <!-- Project Filter Buttons -->
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-8 text-white">Featured Projects</h2>
             <div class="flex flex-wrap justify-center gap-4 mb-16">
                 <button onclick="filterProjects('all')" class="filter-btn active px-6 py-2 rounded-full border border-blue-500 bg-blue-500 text-white text-sm font-bold transition-all">All</button>
                 <button onclick="filterProjects('data-eng')" class="filter-btn px-6 py-2 rounded-full border border-slate-700 hover:border-blue-500 text-slate-400 hover:text-blue-400 text-sm font-bold transition-all">Data Engineering</button>
                 <button onclick="filterProjects('ml')" class="filter-btn px-6 py-2 rounded-full border border-slate-700 hover:border-blue-500 text-slate-400 hover:text-blue-400 text-sm font-bold transition-all">Machine Learning</button>
-                <button onclick="filterProjects('cloud')" class="filter-btn px-6 py-2 rounded-full border border-slate-700 hover:border-blue-500 text-slate-400 hover:text-blue-400 text-sm font-bold transition-all">Cloud & Tools</button>
             </div>
-
+            
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 project-container">
-                <!-- Credit Card Fraud Detection -->
-                <div class="project-card ml group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2">
+                <!-- Project 1: Fraud Detection -->
+                <div class="project-card ml group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300">
                     <div class="p-8">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="text-4xl text-blue-400"><i class="fas fa-shield-alt"></i></div>
-                            <a href="https://github.com/Prajakta2011/credit-card-fraud-detection" target="_blank" class="text-slate-400 hover:text-blue-400 transition-colors">
-                                <i class="fab fa-github text-2xl"></i>
-                            </a>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Credit Card Fraud Detection</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                            A Machine Learning project comparing KNN, Logistic Regression, SVM, and Decision Tree models to detect fraudulent transactions with high precision.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">Python</span>
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">Scikit-Learn</span>
-                        </div>
-                        <div class="flex gap-4">
-                            <a href="https://github.com/Prajakta2011/credit-card-fraud-detection" target="_blank" class="text-blue-400 text-sm font-bold hover:underline flex items-center">
-                                View Code <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                            </a>
-                        </div>
+                        <div class="text-4xl text-blue-400 mb-6"><i class="fas fa-shield-alt"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-3">Fraud Detection</h3>
+                        <p class="text-slate-400 text-sm mb-6">Machine Learning project to detect fraudulent transactions.</p>
+                        <a href="https://github.com/Prajakta2011/credit-card-fraud-detection" target="_blank" class="text-blue-400 font-bold hover:underline">View Code →</a>
                     </div>
                 </div>
-
-                <!-- Real-Time Lakehouse Pipeline -->
-                <div class="project-card data-eng group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2">
+                <!-- Project 2: Lakehouse -->
+                <div class="project-card data-eng group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300">
                     <div class="p-8">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="text-4xl text-blue-400"><i class="fas fa-stream"></i></div>
-                            <div class="text-slate-500"><i class="fab fa-github text-2xl"></i></div>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Real-Time Lakehouse Pipeline</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                            Architected a streaming ETL pipeline using AWS Kinesis and PySpark to ingest e-commerce events, performing windowed aggregations and sinking data into S3 using Apache Iceberg.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">AWS Kinesis</span>
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">PySpark</span>
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">Apache Iceberg</span>
-                        </div>
-                        <div class="flex gap-4">
-                            <span class="text-blue-400 text-sm font-bold flex items-center cursor-default">
-                                <i class="fas fa-microchip mr-2"></i> Streaming Ingestion
-                            </span>
-                        </div>
+                        <div class="text-4xl text-blue-400 mb-6"><i class="fas fa-stream"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-3">Real-Time Lakehouse</h3>
+                        <p class="text-slate-400 text-sm mb-6">Streaming ETL pipeline using AWS Kinesis and PySpark.</p>
+                        <span class="text-blue-400 font-bold">In Production</span>
                     </div>
                 </div>
-
-                <!-- MDM-Ready Data Quality Firewall -->
-                <div class="project-card data-eng group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2">
+                <!-- Project 3: Snowslice App -->
+                <div class="project-card data-eng group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300">
                     <div class="p-8">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="text-4xl text-blue-400"><i class="fas fa-shield-virus"></i></div>
-                            <div class="text-slate-500"><i class="fab fa-github text-2xl"></i></div>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">MDM Data Quality Firewall</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                            Engineered a PySpark-based "Data Quality Firewall" to standardize and deduplicate customer data across multiple sources, applying survivorship logic to create MDM-ready "Golden Records."
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">PySpark</span>
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">MDM Integration</span>
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">Data Cleaning</span>
-                        </div>
-                        <div class="flex gap-4">
-                            <span class="text-blue-400 text-sm font-bold flex items-center cursor-default">
-                                <i class="fas fa-check-circle mr-2"></i> Entity Resolution
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- End-to-End Serverless ETL -->
-                <div class="project-card cloud data-eng group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="text-4xl text-blue-400"><i class="fas fa-cloud-upload-alt"></i></div>
-                            <div class="text-slate-500"><i class="fab fa-github text-2xl"></i></div>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Serverless ETL Pipeline</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                            Developed a cost-effective ETL pipeline using AWS Lambda for API data extraction, AWS Glue (PySpark) for transformation, and Snowflake as the data warehouse.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">AWS Lambda</span>
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">AWS Glue</span>
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">Snowflake</span>
-                        </div>
-                        <div class="flex gap-4">
-                            <span class="text-blue-400 text-sm font-bold flex items-center cursor-default">
-                                <i class="fas fa-bolt mr-2"></i> Cloud-Native
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Snowslice App Project -->
-                <div class="project-card cloud group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="text-4xl text-blue-400"><i class="fas fa-snowflake"></i></div>
-                            <a href="https://github.com/Prajakta2011/snoslice" target="_blank" class="text-slate-400 hover:text-blue-400 transition-colors">
-                                <i class="fab fa-github text-2xl"></i>
-                            </a>
-                        </div>
+                        <div class="text-4xl text-blue-400 mb-6"><i class="fas fa-snowflake"></i></div>
                         <h3 class="text-xl font-bold text-white mb-3">Snowslice App</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                            A specialized utility for efficient data compression and slicing, optimized for large-scale data transfer and storage in Snowflake environments.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">Python</span>
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">Snowflake</span>
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">ETL</span>
-                        </div>
-                        <div class="flex gap-4">
-                            <a href="https://github.com/Prajakta2011/snoslice" target="_blank" class="text-blue-400 text-sm font-bold hover:underline flex items-center">
-                                View Repository <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Clinical Trial Patient Monitoring Pipeline -->
-                <div class="project-card data-eng group relative bg-slate-800 rounded-3xl border border-slate-700 overflow-hidden hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-6">
-                            <div class="text-4xl text-blue-400"><i class="fas fa-heartbeat"></i></div>
-                            <div class="text-slate-500"><i class="fab fa-github text-2xl"></i></div>
-                        </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Clinical Data Pipeline</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                            Automated the ingestion of clinical site data to monitor patient safety. Implemented checks for Adverse Events and prepared data for FDA-standard reporting.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">PySpark</span>
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">Life Sciences</span>
-                            <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">AWS S3</span>
-                        </div>
-                        <div class="flex gap-4">
-                            <span class="text-blue-400 text-sm font-bold flex items-center cursor-default">
-                                <i class="fas fa-notes-medical mr-2"></i> Health Tech
-                            </span>
-                        </div>
+                        <p class="text-slate-400 text-sm mb-6">Utility for Snowflake data compression and slicing.</p>
+                        <a href="https://github.com/Prajakta2011/snoslice" target="_blank" class="text-blue-400 font-bold hover:underline">View Repository →</a>
                     </div>
                 </div>
             </div>
@@ -584,341 +306,142 @@
 
     <!-- Experience Section -->
     <section id="experience" class="py-24 bg-slate-800/50" data-aos="fade-up">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-16 text-center text-white">Professional Journey</h2>
-            
-            <!-- Featured Achievement (from LinkedIn Post) -->
-            <div class="mb-16 p-8 bg-blue-900/20 border-2 border-blue-500/50 rounded-3xl relative overflow-hidden group" data-aos="zoom-in">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                    <span class="text-6xl text-blue-400">🏆</span>
-                </div>
-                <h3 class="text-blue-400 font-bold uppercase tracking-widest text-sm mb-4">Featured Achievement</h3>
-                <h4 class="text-2xl font-bold text-white mb-4">Mastering Modern MDM with Reltio</h4>
-                <p class="text-slate-300 leading-relaxed mb-6">
-                    Successfully completed the Reltio Multidomain Master Data Management training. This milestone signifies expertise in managing complex data at scale using a cloud-native, API-first approach—critical for driving data governance and high-impact business decisions in the life sciences sector.
-                </p>
-                <div class="flex flex-wrap gap-3">
-                    <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">Cloud-Native MDM</span>
-                    <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">Data Governance</span>
-                    <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-xs font-semibold">API-First Architecture</span>
-                </div>
-            </div>
-
-            <div class="relative border-l border-slate-700 ml-4 pl-10">
-                <div class="mb-12 relative" data-aos="fade-left">
-                    <div class="absolute -left-[54px] w-6 h-6 bg-blue-600 rounded-full border-4 border-slate-900"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-16 text-white">Experience</h2>
+            <div class="text-left border-l-2 border-blue-500 pl-8 ml-4">
+                <div class="mb-12 relative">
+                    <div class="absolute -left-[41px] w-4 h-4 bg-blue-500 rounded-full"></div>
                     <h3 class="text-xl font-bold text-white">Data Engineer</h3>
-                    <p class="text-blue-400 mb-2">Saama Technologies • 2024 - Present</p>
-                    <p class="text-slate-400 leading-relaxed">
-                        Contributing to enterprise-grade data management solutions using Reltio MDM. Working on complex data integration pipelines and ensuring high data quality for business intelligence.
-                    </p>
-                </div>
-                <div class="mb-12 relative opacity-70" data-aos="fade-left" data-aos-delay="100">
-                    <div class="absolute -left-[54px] w-6 h-6 bg-slate-600 rounded-full border-4 border-slate-900"></div>
-                    <h3 class="text-xl font-bold text-white">Software Engineer Intern</h3>
-                    <p class="text-blue-400 mb-2">Saama Technologies • 2023 - 2024</p>
-                    <p class="text-slate-400 leading-relaxed">
-                        Focused on learning data orchestration and supporting the engineering team in data-centric application development.
-                    </p>
+                    <p class="text-blue-400">Saama Technologies • 2024 - Present</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Certifications -->
-    <section id="certifications" class="py-24" data-aos="fade-up">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-16 text-center text-white">Certifications & Training</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="flex items-start p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer" data-aos="fade-right" onclick="openModal('CDAC-DBDA', 'Post Graduate Diploma in Big Data Analytics from CDAC. Covered Hadoop, Spark, NoSQL, and Advanced Analytics.')">
-                    <div class="text-yellow-500 mr-4 text-2xl">📜</div>
-                    <div>
-                        <h4 class="font-bold">CDAC-DBDA</h4>
-                        <p class="text-slate-400 text-sm">Post Graduate Diploma in Big Data Analytics</p>
-                    </div>
-                </div>
-                <div class="flex items-start p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer" data-aos="fade-left" onclick="openModal('Reltio MDM Foundation', 'Multidomain Master Data Management foundation training. Expertise in cloud-native MDM solutions.')">
-                    <div class="text-yellow-500 mr-4 text-2xl">📜</div>
-                    <div class="flex-1">
-                        <h4 class="font-bold">Reltio MDM Foundation</h4>
-                        <p class="text-slate-400 text-sm mb-3">Multidomain Master Data Management</p>
-                    </div>
-                </div>
-                <div class="flex items-start p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer" data-aos="fade-right" onclick="openModal('Python Data Structures', 'Advanced certification in Python data structures and algorithms from Coursera.')">
-                    <div class="text-yellow-500 mr-4 text-2xl">📜</div>
-                    <div>
-                        <h4 class="font-bold">Python Data Structures</h4>
-                        <p class="text-slate-400 text-sm">Coursera Certification</p>
-                    </div>
-                </div>
-                <div class="flex items-start p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-blue-500 transition-colors cursor-pointer" data-aos="fade-left" onclick="openModal('Cloud Computing Concepts', 'Fundamental concepts of cloud infrastructure, distributed systems, and AWS.')">
-                    <div class="text-yellow-500 mr-4 text-2xl">📜</div>
-                    <div>
-                        <h4 class="font-bold">Cloud Computing Concepts</h4>
-                        <p class="text-slate-400 text-sm">Coursera Certification</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ... rest of contact and footer ... -->
-
-    <!-- Back to Top Button -->
-    <div id="backToTop" onclick="scrollToTop()" class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- Certification Modal -->
-    <div id="certModal" class="modal" onclick="closeModal()">
-        <div class="modal-content text-center" onclick="event.stopPropagation()">
-            <span class="absolute top-4 right-6 text-slate-400 hover:text-white cursor-pointer text-2xl" onclick="closeModal()">&times;</span>
-            <div class="text-6xl mb-6">📜</div>
-            <h3 id="modalTitle" class="text-2xl font-bold text-white mb-4"></h3>
-            <p id="modalDescription" class="text-slate-400 leading-relaxed"></p>
-        </div>
-    </div>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-slate-950 relative overflow-hidden" data-aos="zoom-in">
-        <!-- Abstract Background Glow -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px]"></div>
-        
-        <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold mb-4 text-white">Get In Touch</h2>
-            <p class="text-slate-400 mb-12 max-w-lg mx-auto italic">"Let's connect and transform data into strategic assets together."</p>
-            
-            <div class="bg-slate-900/50 border border-slate-800 p-10 rounded-[3rem] backdrop-blur-xl shadow-2xl">
-                <!-- Social Icons -->
-                <div class="flex justify-center space-x-10 mb-12">
-                    <a href="https://in.linkedin.com/in/prajakta-masal-977931211" target="_blank" 
-                       class="text-4xl text-slate-400 hover:text-blue-500 transition-all duration-300 transform hover:scale-125 hover:drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/Prajakta2011" target="_blank" 
-                       class="text-4xl text-slate-400 hover:text-white transition-all duration-300 transform hover:scale-125 hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="mailto:prajaktamasal2000@gmail.com" 
-                       class="text-4xl text-slate-400 hover:text-red-400 transition-all duration-300 transform hover:scale-125 hover:drop-shadow-[0_0_15px_rgba(248,113,113,0.4)]">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-
-                <div class="h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent mb-10"></div>
-
-                <!-- Email Display -->
-                <div class="space-y-6">
-                    <p class="text-xs font-bold uppercase tracking-[0.3em] text-blue-500">Official Correspondence</p>
-                    <div class="flex flex-col sm:flex-row justify-center gap-6 text-lg md:text-xl font-bold text-white">
-                        <a href="mailto:prajaktamasal2000@gmail.com" class="hover:text-blue-400 transition-colors">prajaktamasal2000@gmail.com</a>
-                        <span class="hidden sm:inline text-slate-700">|</span>
-                        <a href="mailto:prajaktamasal20@gmail.com" class="hover:text-blue-400 transition-colors">prajaktamasal20@gmail.com</a>
-                    </div>
-                </div>
+    <section id="contact" class="py-24 bg-slate-950 relative overflow-hidden text-center">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px]"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-12 text-white">Get In Touch</h2>
+            <div class="flex justify-center space-x-10 mb-12">
+                <a href="https://in.linkedin.com/in/prajakta-masal-977931211" target="_blank" class="text-4xl text-slate-400 hover:text-blue-500 transition-all"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Prajakta2011" target="_blank" class="text-4xl text-slate-400 hover:text-white transition-all"><i class="fab fa-github"></i></a>
+                <a href="mailto:prajaktamasal2000@gmail.com" class="text-4xl text-slate-400 hover:text-red-400 transition-all"><i class="fas fa-envelope"></i></a>
             </div>
+            <p class="text-white font-bold">prajaktamasal2000@gmail.com</p>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-8 bg-slate-950 text-slate-600 text-center text-sm">
+    <footer class="py-8 bg-slate-950 text-slate-600 text-center text-sm border-t border-slate-900">
         &copy; 2026 Prajakta Masal. All rights reserved.
     </footer>
 
+    <!-- Back to Top -->
+    <div id="backToTop" onclick="scrollToTop()" class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg"><i class="fas fa-arrow-up"></i></div>
+
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      AOS.init({
-        duration: 1000,
-        once: true,
-      });
+      AOS.init({ duration: 1000, once: true });
 
-      // Navbar Scroll Effect
+      // Canvas Background
+      const canvas = document.getElementById('hero-canvas');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      function init() {
+          canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+          particles = [];
+          for (let i = 0; i < 80; i++) {
+              particles.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, vx: (Math.random()-0.5)*0.5, vy: (Math.random()-0.5)*0.5, size: Math.random()*2 });
+          }
+      }
+      function animate() {
+          ctx.clearRect(0,0,canvas.width,canvas.height); ctx.fillStyle = '#3b82f6'; ctx.strokeStyle = 'rgba(59,130,246,0.1)';
+          particles.forEach((p, i) => {
+              p.x += p.vx; p.y += p.vy;
+              if (p.x < 0 || p.x > canvas.width) p.vx *= -1; if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+              ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,Math.PI*2); ctx.fill();
+              for (let j=i+1; j<particles.length; j++) {
+                  const p2 = particles[j]; const dist = Math.sqrt((p.x-p2.x)**2 + (p.y-p2.y)**2);
+                  if (dist < 150) { ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(p2.x,p2.y); ctx.stroke(); }
+              }
+          });
+          requestAnimationFrame(animate);
+      }
+      window.addEventListener('resize', init); init(); animate();
+
+      // Navbar Scroll
       window.onscroll = function() {
           const nav = document.querySelector('nav');
-          const backToTop = document.getElementById('backToTop');
-          
-          if (window.pageYOffset > 50) {
-              nav.classList.add('scrolled');
-          } else {
-              nav.classList.remove('scrolled');
-          }
-
-          if (window.pageYOffset > 300) {
-              backToTop.style.display = "flex";
-          } else {
-              backToTop.style.display = "none";
-          }
+          const btt = document.getElementById('backToTop');
+          if (window.pageYOffset > 50) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+          if (window.pageYOffset > 300) btt.style.display = "flex"; else btt.style.display = "none";
       };
 
-      // Back to Top Function
-      function scrollToTop() {
-          window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-          });
+      function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+      // Mobile Menu
+      const btn = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+
+      // Theme Toggle
+      const tt = document.getElementById('theme-toggle');
+      const ttm = document.getElementById('theme-toggle-mobile');
+      function toggle() {
+          document.body.classList.toggle('light-mode');
+          const isLight = document.body.classList.contains('light-mode');
+          const icon = isLight ? 'fa-sun' : 'fa-moon';
+          tt.innerHTML = `<i class="fas ${icon} text-lg"></i>`;
+          ttm.innerHTML = `<i class="fas ${icon}"></i>`;
       }
+      tt.addEventListener('click', toggle); ttm.addEventListener('click', toggle);
 
-      // Modal Functions
-      function openModal(title, description) {
-          document.getElementById('modalTitle').innerText = title;
-          document.getElementById('modalDescription').innerText = description;
-          document.getElementById('certModal').style.display = 'block';
-          document.body.style.overflow = 'hidden'; // Prevent scroll
-      }
-
-      function closeModal() {
-          document.getElementById('certModal').style.display = 'none';
-          document.body.style.overflow = 'auto'; // Re-enable scroll
-      }
-
-      // Mobile Menu Toggle
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-      
-      mobileMenuButton.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
-          const icon = mobileMenuButton.querySelector('i');
-          icon.classList.toggle('fa-bars');
-          icon.classList.toggle('fa-times');
-      });
-
-      // Close mobile menu when clicking a link
-      const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-          mobileMenuLinks.forEach(link => {
-          link.addEventListener('click', () => {
-              mobileMenu.classList.add('hidden');
-              const icon = mobileMenuButton.querySelector('i');
-              icon.classList.add('fa-bars');
-              icon.classList.remove('fa-times');
-          });
-      });
-
-      // Typewriter Effect
-      const words = ["Computer Engineering Graduate", "Big Data Enthusiast", "Snowflake Specialist", "Cloud Solutions Architect"];
-      let i = 0;
-      let j = 0;
-      let currentWord = "";
-      let isDeleting = false;
-      const typewriterElement = document.getElementById('typewriter');
-
+      // Typewriter
+      const words = ["Data Engineer", "Big Data Analyst", "Cloud Architect"];
+      let idx=0, charIdx=0, isDel=false;
       function type() {
-          currentWord = words[i];
-          if (isDeleting) {
-              typewriterElement.textContent = currentWord.substring(0, j - 1);
-              j--;
-              if (j == 0) {
-                  isDeleting = false;
-                  i = (i + 1) % words.length;
-              }
-          } else {
-              typewriterElement.textContent = currentWord.substring(0, j + 1);
-              j++;
-              if (j == currentWord.length) {
-                  isDeleting = true;
-                  setTimeout(type, 1500); // Wait before starting to delete
-                  return;
-              }
-          }
-          setTimeout(type, isDeleting ? 50 : 100);
+          const el = document.getElementById('typewriter');
+          const word = words[idx];
+          el.textContent = isDel ? word.substring(0, charIdx--) : word.substring(0, charIdx++);
+          if (!isDel && charIdx > word.length) { isDel = true; setTimeout(type, 2000); return; }
+          if (isDel && charIdx < 0) { isDel = false; idx = (idx+1)%words.length; charIdx=0; }
+          setTimeout(type, isDel ? 50 : 100);
       }
       type();
 
-      // Stats Counter Animation
+      // Filter Projects
+      function filterProjects(cat) {
+          const cards = document.querySelectorAll('.project-card');
+          cards.forEach(c => { c.style.display = (cat==='all' || c.classList.contains(cat)) ? 'block' : 'none'; });
+      }
+
+      // Stats Counter
       const counters = document.querySelectorAll('.counter');
-      const speed = 200;
-
-      const animateCounters = () => {
-          counters.forEach(counter => {
-              const updateCount = () => {
-                  const target = +counter.getAttribute('data-target');
-                  const count = +counter.innerText;
-                  const inc = target / speed;
-
-                  if (count < target) {
-                      counter.innerText = Math.ceil(count + inc);
-                      setTimeout(updateCount, 1);
-                  } else {
-                      counter.innerText = target;
-                  }
-              };
-              updateCount();
-          });
-      };
-
-      // Trigger animation when section is in view
-      const statsSection = document.querySelector('.counter').parentElement.parentElement.parentElement;
-      const statsObserver = new IntersectionObserver((entries) => {
+      const obs = new IntersectionObserver((entries) => {
           if(entries[0].isIntersecting) {
-              animateCounters();
-              statsObserver.unobserve(statsSection);
+              counters.forEach(c => {
+                  const target = +c.getAttribute('data-target');
+                  let count = 0;
+                  const update = () => {
+                      if(count < target) { count += Math.ceil(target/100); c.innerText = count; setTimeout(update, 20); }
+                      else c.innerText = target;
+                  };
+                  update();
+              });
+              obs.disconnect();
           }
       }, { threshold: 0.5 });
+      obs.observe(document.querySelector('.counter'));
 
-      statsObserver.observe(statsSection);
-
-      // --- NEW: Theme Toggle Logic ---
-      const themeToggle = document.getElementById('theme-toggle');
-      const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-      const body = document.body;
-
-      function toggleTheme() {
-          body.classList.toggle('light-mode');
-          const isLight = body.classList.contains('light-mode');
-          const iconClass = isLight ? 'fa-sun' : 'moon';
-          themeToggle.innerHTML = `<i class="fas fa-${iconClass} text-lg"></i>`;
-          themeToggleMobile.innerHTML = `<i class="fas fa-${iconClass}"></i>`;
-          localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
-      }
-
-      themeToggle.addEventListener('click', toggleTheme);
-      themeToggleMobile.addEventListener('click', toggleTheme);
-
-      // Check for saved theme
-      if (localStorage.getItem('portfolio-theme') === 'light') {
-          toggleTheme();
-      }
-
-      // --- NEW: Project Filtering Logic ---
-      function filterProjects(category) {
-          const cards = document.querySelectorAll('.project-card');
-          const buttons = document.querySelectorAll('.filter-btn');
-
-          // Update active button
-          buttons.forEach(btn => {
-              btn.classList.remove('bg-blue-500', 'text-white', 'border-blue-500');
-              btn.classList.add('text-slate-400', 'border-slate-700');
-              if (btn.getAttribute('onclick').includes(category)) {
-                  btn.classList.remove('text-slate-400', 'border-slate-700');
-                  btn.classList.add('bg-blue-500', 'text-white', 'border-blue-500');
-              }
-          });
-
-          // Show/Hide cards
-          cards.forEach(card => {
-              card.style.display = 'none';
-              if (category === 'all' || card.classList.contains(category)) {
-                  card.style.display = 'block';
-                  // Trigger AOS animation again
-                  card.setAttribute('data-aos', 'fade-up');
-              }
-          });
-      }
-
-      // --- NEW: Skill Bar Animation ---
-      const skillBars = document.querySelectorAll('.skill-bar-fill');
-      const skillsSection = document.getElementById('skills');
-
-      const skillObserver = new IntersectionObserver((entries) => {
+      // Skill Bars
+      const bars = document.querySelectorAll('.skill-bar-fill');
+      const sObs = new IntersectionObserver((entries) => {
           if(entries[0].isIntersecting) {
-              skillBars.forEach(bar => {
-                  const target = bar.getAttribute('data-target');
-                  bar.style.width = target;
-              });
-              skillObserver.unobserve(skillsSection);
+              bars.forEach(b => { b.style.width = b.getAttribute('data-target'); });
+              sObs.disconnect();
           }
       }, { threshold: 0.2 });
-
-      skillObserver.observe(skillsSection);
+      sObs.observe(document.getElementById('skills'));
     </script>
 </body>
 </html>
